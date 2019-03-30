@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BlogAppDemo</string>
+    <string name="pass_hint">Password...</string>
+    <string name="email_hint">Your email...</string>
+    <string name="logo_login">Logo Login Page</string>
+    <string name="login_button_text">Login To Account</string>
+    <string name="login_reg_btn_text">Need A New Account?</string>
 </resources>
