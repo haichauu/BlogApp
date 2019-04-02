@@ -1,6 +1,7 @@
 package com.example.blogappdemo;
 
 import android.content.Intent;
+
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,11 +33,19 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-       // loginProgress = findViewById(R.id.login_progress);
+        loginProgress = findViewById(R.id.login_progress);
         btnLogin = findViewById(R.id.login_btn);
         btnRegister = findViewById(R.id.reg_btn);
         edtLoginEmail = findViewById(R.id.login_email);
         edtLoginPass = findViewById(R.id.login_password);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regintent = new Intent(LoginActivity.this, Register_Activity.class);
+                startActivity(regintent);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(!TextUtils.isEmpty(loginEmail) && !TextUtils.isEmpty(passwordEmail))
                 {
 
-                  // loginProgress.setVisibility(View.VISIBLE);
+                    loginProgress.setVisibility(View.VISIBLE);
                     mAuth.signInWithEmailAndPassword(loginEmail, passwordEmail).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -65,12 +74,12 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
 
-                            //loginProgress.setVisibility(View.INVISIBLE);
+                            loginProgress.setVisibility(View.INVISIBLE);
                         }
                     });
                 }
                 else
-                    Toast.makeText(LoginActivity.this, "Vui long nhap day du!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Please fill all information!", Toast.LENGTH_LONG).show();
 
             }
         });

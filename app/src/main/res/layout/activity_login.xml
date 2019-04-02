@@ -9,6 +9,14 @@
     tools:context=".LoginActivity"
     android:orientation="vertical">
 
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_progress"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:indeterminate="true"/>
+
     <ImageView
 
         android:id="@+id/loginPageLogo"
@@ -35,7 +43,7 @@
         android:padding="16dp"
         android:textColor="@android:color/white"
         android:textColorHint="@color/whiteStranParentHafl"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <EditText
         android:textSize="18sp"
