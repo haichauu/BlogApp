@@ -17,6 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Set;
+
 public class Register_Activity extends AppCompatActivity {
     private EditText register_email;
     private EditText register_password;
@@ -69,7 +71,9 @@ public class Register_Activity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
                                 {
-                                    sendToMain();
+                                    Intent setupIntent = new Intent(Register_Activity.this, SetupActivity.class);
+                                    startActivity(setupIntent);
+                                    finish();
 
                                 }
                                 else
