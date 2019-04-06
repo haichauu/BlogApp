@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "16035451926",
-    "firebase_url": "https://blogapp-26437.firebaseio.com",
-    "project_id": "blogapp-26437",
-    "storage_bucket": "blogapp-26437.appspot.com"
+    "project_number": "271254944337",
+    "firebase_url": "https://blogapp-5f7bb.firebaseio.com",
+    "project_id": "blogapp-5f7bb",
+    "storage_bucket": "blogapp-5f7bb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:16035451926:android:7a8fbfcce14b6b21",
+        "mobilesdk_app_id": "1:271254944337:android:7a8fbfcce14b6b21",
         "android_client_info": {
           "package_name": "com.example.blogappdemo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "16035451926-0hj7cto3ksqbmhnvijsarmeigrit3atp.apps.googleusercontent.com",
+          "client_id": "271254944337-qjlrhbbbsssl2vesoc5qfgburpvenocg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.blogappdemo",
@@ -25,14 +25,14 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCR1mPEmWbondrxHed9UJVYiDJFiTrXGdM"
+          "current_key": "AIzaSyC4DFdsqUp9bhKHxMZNozy17161EK5rTEU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "16035451926-lmndsiq0t4klk1gjqros13jigtpvsah9.apps.googleusercontent.com",
+              "client_id": "271254944337-lslt2sup947vto20qahv3dhpct8ap3oo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
