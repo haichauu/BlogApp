@@ -126,9 +126,10 @@ public class SetupActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 final String userName = setupName.getText().toString();
-                if (isChanged)
-                {
-                    if(!TextUtils.isEmpty(userName) && mainImageURI != null) {
+
+                if(!TextUtils.isEmpty(userName) && mainImageURI != null) {
+                    if (isChanged)
+                    {
                         userID = firebaseAuth.getCurrentUser().getUid();
                         setupProgress.setVisibility(View.VISIBLE);
                         final StorageReference image_path = storageReference.child("profile_images").child(userID + ".jpg");
@@ -161,10 +162,11 @@ public class SetupActivity extends AppCompatActivity {
                         });
                     }
 
-                }
-                else
-                {
-                    storeFirestore(null, userName);
+                    else
+                    {
+                        storeFirestore(null, userName);
+                    }
+
                 }
             }
         });
@@ -198,7 +200,7 @@ public class SetupActivity extends AppCompatActivity {
 
     private void storeFirestore(@NonNull Task<Uri> task, String userName) {
         Uri download_uri;
-        if (task == null)
+        if (task != null)
         {
             download_uri = task.getResult();
         }
