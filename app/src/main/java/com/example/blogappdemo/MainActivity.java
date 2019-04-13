@@ -53,49 +53,54 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Photo Blog");
 
-        mainBottomNav = findViewById(R.id.main_bottom_nav);
+        if (mAuth.getCurrentUser() != null)
+        {
+            mainBottomNav = findViewById(R.id.main_bottom_nav);
 
 
-        //FRAGMENTS
-        homeFragment = new HomeFragment();
-        accountFragment = new AccountFragment();
-        notificationFragment = new NotificationFragment();
+            //FRAGMENTS
+            homeFragment = new HomeFragment();
+            accountFragment = new AccountFragment();
+            notificationFragment = new NotificationFragment();
+
+            replaceFragment(homeFragment);
 
 
-        mainBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            mainBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                switch (menuItem.getItemId())
-                {
-                    case R.id.bottom_action_home:
-                        replaceFragment(homeFragment);
-                        return true;
+                    switch (menuItem.getItemId())
+                    {
+                        case R.id.bottom_action_home:
+                            replaceFragment(homeFragment);
+                            return true;
 
-                    case R.id.bottom_action_account:
-                        replaceFragment(accountFragment);
-                        return true;
+                        case R.id.bottom_action_account:
+                            replaceFragment(accountFragment);
+                            return true;
 
-                    case R.id.bottom_action_notification:
-                        replaceFragment(notificationFragment);
-                        return true;
+                        case R.id.bottom_action_notification:
+                            replaceFragment(notificationFragment);
+                            return true;
 
-                    default:
-                        return false;
+                        default:
+                            return false;
+                    }
                 }
-            }
-        });
+            });
 
 
-        addPostBtn = findViewById(R.id.post_btn);
-        addPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
-            startActivity(newPostIntent);
-            }
-        });
+            addPostBtn = findViewById(R.id.post_btn);
+            addPostBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
+                    startActivity(newPostIntent);
+                }
+            });
 
+        }
 
 
     }
@@ -162,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(settingsIntent);
                 return true;
 
-                default:
-                    return  false;
+            default:
+                return  false;
 
         }
 

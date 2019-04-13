@@ -27,7 +27,7 @@
         />
 
     <ImageView
-        android:src="@drawable/image_placeholder"
+        android:src="@drawable/post_placeholder"
         android:id="@+id/new_post_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
