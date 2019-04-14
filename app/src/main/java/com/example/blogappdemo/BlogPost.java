@@ -3,7 +3,7 @@ package com.example.blogappdemo;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class BlogPost {
+public class BlogPost extends BlogPostId{
 
     public String image_url;
     public String desc;
