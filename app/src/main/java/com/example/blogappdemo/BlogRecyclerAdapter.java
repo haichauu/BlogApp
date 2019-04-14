@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,8 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapter.ViewHolder> {
 
@@ -100,17 +103,24 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if(!queryDocumentSnapshots.isEmpty())
-                {
-
-                    int count = queryDocumentSnapshots.size();
-                   viewHolder.updateLikesCount(count);
-
+                if (e!=null){
+                    Log.d(TAG,"Error:"+e.getMessage());
                 }
                 else
                 {
-                    viewHolder.updateLikesCount(0);
 
+                    if(!queryDocumentSnapshots.isEmpty())
+                    {
+
+                        int count = queryDocumentSnapshots.size();
+                        viewHolder.updateLikesCount(count);
+
+                    }
+                    else
+                    {
+                        viewHolder.updateLikesCount(0);
+
+                    }
                 }
 
             }
@@ -118,16 +128,24 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         //Get Likes
         firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists())
-                {
-                    viewHolder.blogLikeBtn.setImageDrawable(context.getDrawable(R.mipmap.action_like_accent));
+                if (e!=null){
+                    Log.d(TAG,"Error:"+e.getMessage());
                 }
                 else
                 {
-                    viewHolder.blogLikeBtn.setImageDrawable(context.getDrawable(R.mipmap.action_like_gray));
+                    if(documentSnapshot.exists())
+                    {
+                        viewHolder.blogLikeBtn.setImageDrawable(context.getDrawable(R.mipmap.action_like_accent));
+                    }
+                    else
+                    {
+                        viewHolder.blogLikeBtn.setImageDrawable(context.getDrawable(R.mipmap.action_like_gray));
+                    }
                 }
+
 
             }
         });
@@ -179,12 +197,18 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         firebaseFirestore.collection("Posts/" + blogPostId + "/Comments").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if(!queryDocumentSnapshots.isEmpty())
+                if (e!=null){
+                    Log.d(TAG,"Error:"+e.getMessage());
+                }
+                else
                 {
+                    if(!queryDocumentSnapshots.isEmpty())
+                    {
 
-                    int count = queryDocumentSnapshots.size();
-                    viewHolder.updateCommentsCount(count);
+                        int count = queryDocumentSnapshots.size();
+                        viewHolder.updateCommentsCount(count);
 
+                    }
                 }
 
             }
